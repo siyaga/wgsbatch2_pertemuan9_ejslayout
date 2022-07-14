@@ -1,9 +1,12 @@
 const express = require('express')
+const expressEjsLayouts = require('express-ejs-layouts')
 const app = express()
 const port = 3000
 
     // information using ejs
     app.set('view engine', 'ejs') 
+
+    app.use(expressEjsLayouts)
 
     app.get('/', (req, res) => {
     // res.send('Hello World!')
@@ -24,21 +27,18 @@ const port = 3000
     
     const nama = "Adi Riyanto";
     const title = "WebServer EJS";
-    const active = "active";
     res.render('index',{nama, title, cont,active})
     })
 
     app.get('/about', (req, res) => {
         // res.send('This is about Page!')
         const title = "About";
-        const active = "active";
         res.render('about', {title,active})
     })
   
     app.get('/contact', (req, res) => {
         // res.send('This is contact Page!')
         const title = "Contact";
-        const active = "active";
         res.render('contact',{title,active})
     })
 
