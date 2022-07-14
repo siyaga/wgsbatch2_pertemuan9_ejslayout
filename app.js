@@ -4,9 +4,11 @@ const app = express()
 const port = 3000
 
     // information using ejs
-    app.set('view engine', 'ejs') 
+    
 
     app.use(expressEjsLayouts)
+    app.set('layout', './layout/main-layout')
+    app.set('view engine', 'ejs') 
 
     app.get('/', (req, res) => {
     // res.send('Hello World!')
@@ -25,21 +27,18 @@ const port = 3000
         },
     ]
     
-    const nama = "Adi Riyanto";
-    const title = "WebServer EJS";
-    res.render('index',{nama, title, cont,active})
+    res.render('index',{nama : "Adi Riyanto", title : "WebServer EJS", cont, layout : "layout/main-layout"})
     })
 
     app.get('/about', (req, res) => {
         // res.send('This is about Page!')
-        const title = "About";
-        res.render('about', {title,active})
+        res.render('about', {title : "About", layout : "layout/main-layout"})
     })
   
     app.get('/contact', (req, res) => {
         // res.send('This is contact Page!')
-        const title = "Contact";
-        res.render('contact',{title,active})
+        
+        res.render('contact',{title : "Contact", layout : "layout/main-layout"})
     })
 
     //Membuat reques
